@@ -1,24 +1,24 @@
 {
-	"name": "hoangnamitc/tele-command",
-	"description": "Support Telegram Command",
-	"license": "MIT",
-	"autoload": {
-		"psr-4": {
-			"HoangnamItc\\TeleCmd\\": ""
-		},
-		"classmap": [
-			"src/"
-		]
-	},
-	"require": {
-		"php": "^8",
-		"irazasyed/telegram-bot-sdk": "*",
+    "name": "hoangnamitc/tele-command",
+    "description": "Support Telegram Command",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HoangnamItc\\TeleCmd\\": ""
+        },
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": "^8",
+        "irazasyed/telegram-bot-sdk": "*",
         "symfony/error-handler": "*",
         "symfony/http-kernel": "*",
         "symfony/var-dumper": "*",
-		"illuminate/filesystem": "*",
-		"larso/config": "*"
-	},
-	"prefer-stable": true,
-	"minimum-stability": "dev"
+        "illuminate/filesystem": "*",
+        "larso/config": "*"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }
