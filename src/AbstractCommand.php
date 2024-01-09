@@ -5,6 +5,7 @@ namespace HoangnamItc\TeleCmd;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use Telegram\Bot\Objects\User;
+use Telegram\Bot\Objects\Message;
 use Telegram\Bot\Traits\Telegram;
 use Illuminate\Support\Collection;
 use Telegram\Bot\Commands\Command;
@@ -26,6 +27,31 @@ abstract class AbstractCommand extends Command
     protected array $ownerIds = [];
 
     protected string $pattern = '{domain}';
+
+    /**
+     * @link https://core.telegram.org/bots/api#deletemessage
+     */
+    protected function deleteMess(int $chatId, int $messId)
+    {
+        return $this->telegram->deleteMessage([
+            'chat_id'    => $chatId,
+            'message_id' => $messId,
+        ]);
+    }
+
+    /**
+     * @link https://core.telegram.org/bots/api#editmessagetext
+     */
+    protected function editMess(int|string $chatId, int $messId, string $text, string $parseMode = 'markdown', bool $disableWebPagePreview = true): Message
+    {
+        return $this->telegram->editMessageText([
+            'chat_id'                  => $chatId,
+            'message_id'               => $messId,
+            'text'                     => $text,
+            'parse_mode'               => $parseMode,
+            'disable_web_page_preview' => $disableWebPagePreview,
+        ]);
+    }
 
     /**
      * Gán chủ sở hữu bot
