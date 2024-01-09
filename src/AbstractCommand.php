@@ -85,6 +85,14 @@ abstract class AbstractCommand extends Command
     }
 
     /**
+     * @link https://core.telegram.org/bots/api#message
+     */
+    protected function getMessage(): Message|Collection
+    {
+        return $this->getHookUpdate()->getMessage();
+    }
+
+    /**
      * @return UpdateObject[]
      */
     protected function getUpdateObject(array $params = [], bool $shouldDispatchEvents = true): array
@@ -221,7 +229,7 @@ abstract class AbstractCommand extends Command
 
     protected function from(): Collection|User
     {
-        return $this->getHookUpdate()->getMessage()->get('from', collect());
+        return $this->getMessage()->get('from', collect());
     }
 
     /**
@@ -348,6 +356,11 @@ abstract class AbstractCommand extends Command
         }
 
         return null;
+    }
+
+    protected function getMessId(): ?int
+    {
+        return $this->getMessage()->get('message_id');
     }
 
     /**
